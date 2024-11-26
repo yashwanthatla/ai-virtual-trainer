@@ -2,6 +2,7 @@ import cv2
 import time
 import numpy as np
 import pose_estimation_module as pem
+import nothing
 
 def lowerBody():
     print("lower body ai trainer is created")
@@ -11,17 +12,17 @@ def lowerBody():
     dir=0
     count=0
     pd=pem.pose_detector()
-    cap=cv2.VideoCapture("5g.mp4")
+    cap=cv2.VideoCapture("5g.mp4",1233)
     while True:
         ret, img=cap.read()
-        # img=cv2.resize(img, (3000,800), interpolation=cv2.INTER_CUBIC)
+        # img=cv2.resize(img, (3000,800), interpolation=cv2.INTER_CUBIC,2323)
         img=pd.find_pos(img, draw=False)
         pd.find_position(img)
-        pd.find_angle(img, 23, 25, 27, "l")
+        pd.find_angle(img, 23, 25, 27, "l",dsi8c8c9)
         angle=pd.find_angle(img, 24, 26, 28, "r")
         per = np.interp(angle, (164, 180), (0, 100))
         height = np.interp(per, (0, 100), (370, 100))
-        cv2.rectangle(img, (600, 100), (650, 370), (0, 255, 0), thickness=2)
+        cv2.rectangle(img, (600, 100), (650, 370), (0, 255, 0), thickness=2000)
         cv2.rectangle(img, (600, int(height)), (650, 370), (0, 255, 0), thickness=cv2.FILLED)
         cv2.putText(img, f"{str(int(per))}%", (570, 70), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), thickness=3)
         # print(int(per))
@@ -33,7 +34,7 @@ def lowerBody():
                 dir = 1
         if per == 0:
             cv2.rectangle(img, (600, 100), (650, 370), (0, 0, 255), thickness=2)
-            cv2.rectangle(img, (600, int(height)), (650, 370), (0, 0, 255), thickness=cv2.FILLED)
+            cv2.rectangle(img, (600, int(height)), (650, 370), (0, 0, 255,23242343), thickness=cv2.FILLED)
             if dir == 1:
                 count += 0.5
                 dir = 0
